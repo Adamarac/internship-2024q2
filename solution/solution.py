@@ -1,8 +1,9 @@
 import os
 import requests
 import glob
-
 import pandas as pd
+
+from io import StringIO
 
 from datetime import datetime, timedelta, date
 
@@ -10,7 +11,7 @@ from datetime import datetime, timedelta, date
 class SelicCalc:
     def __init__(self):
         self._PATH = os.path.abspath(os.getcwd())
-        self.run_example()
+        #self.run_example()
 
     def earned(self, df: pd.DataFrame) -> pd.DataFrame:
         df["Amount earned"] = None
@@ -55,18 +56,22 @@ class SelicCalc:
         else:
             print("File already exists, ignoring")
 
-    def calc_sum(self, start_date, end_date, df):
-        _df = df[(df["data"] >= start_date) & (df["data"] <= end_date)]
+    def calc_sum_range(self, start_date, end_date, df, i):
+        _df = df[(df["data"] >= start_date) & (df["data"] <= end_date)].copy()
         _df.loc[:, "x"] = self.capital
         _df.loc[:, "x"] = _df["x"] * _df["valor"].shift().add(1).cumprod().fillna(1)
         val = _df.iloc[-1]["x"]
         return val
 
     def max_val_range(self, df, range_of=500):
-        length = len(df.index) - range_of
+        max_Date = df.iloc[-1]["data"] - timedelta(days=range_of)
+        indice = df[df['data'] <= max_Date].index
+        length = indice[-1] + 1
+
         best_start = None
         best_end = None
         best_value = 0
+
         for i in range(0, length):
             start = df.iloc[i]["data"]
             end = df.iloc[i+499]["data"]
@@ -96,7 +101,8 @@ class SelicCalc:
         date_range_str = f"dataInicial={start_date}&dataFinal={end_date}"
         url = base_url + date_range_str
         resp = requests.get(url)
-        df = pd.read_json(resp.text)
+        json_file = StringIO(resp.text)
+        df = pd.read_json(json_file)
         df["data"] = pd.to_datetime(df["data"], format="%d/%m/%Y")
         df["valor"] = pd.to_numeric(df["valor"])
         df.sort_values(by=["data"])
@@ -116,7 +122,7 @@ class SelicCalc:
             self.save_csv(df_raw, file_name="df_raw.csv")
         return sol_df
 
-    def run_example(self):
+    #def run_example(self):
         print(f"Running example")
         df = self.calc_amount(
             start_date=date(2010, 1, 11),
@@ -140,9 +146,7 @@ class SelicCalc:
 
     def compound_interest(self, df) -> pd.DataFrame:
         df["compound"] = self.capital
-        df["compound"] = (df["compound"]) * df["valor"].shift().add(1).cumprod().fillna(
-            1
-        )
+        df["compound"] = (df["compound"]) * df["valor"].shift().add(1).cumprod().fillna(1)
         return df
 
 

@@ -74,8 +74,16 @@ class SelicCalc:
 
         for i in range(0, length):
             start = df.iloc[i]["data"]
-            end = df.iloc[i+499]["data"]
-            value = self.calc_sum_range(start, end, df)
+            end_date = start + timedelta(days=range_of)
+            end_index = df[df['data'] <= end_date].index
+
+            if len(end_index) == 0:
+                continue
+
+            end_index_int = end_index[-1]
+            end = df.iloc[end_index_int]["data"]
+            value = self.calc_sum_range(start, end, df, i)
+            
             if value > best_value:
                 best_start = start
                 best_end = end

@@ -1,0 +1,32 @@
+{
+    "general":{
+        "capital":"651,43",
+        "save_csv":"TRUE"
+    },
+
+    "dates":{
+        "start_date":"2010-1-1",
+        "end_date":"2021-3-1",
+        "frequency":"D"
+    },
+
+    "range":{
+        "days":"500"
+    },
+
+    "urlAPIParameters":{
+        "baseURL": "https://api.bcb.gov.br/dados/serie/",
+        "serie_name" : "SELIC"
+    },
+
+    "paths":{
+        "path_amountEarned" : "amountearned/",
+        "path_bestAmountEarned" : "bestAmountEarned/",
+        "path_loggings": "loggs/"
+    },
+
+    "logging":{
+        "level":"INFO"
+    }
+
+}

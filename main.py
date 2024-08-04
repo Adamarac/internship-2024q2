@@ -1,15 +1,17 @@
-from solution.solution import SelicCalc
+import json
 
-from datetime import date
-
+from data.loadDataHandler import APISeriesIntervalDataLoader
 
 if __name__ == '__main__':
-    calc = SelicCalc()
 
-    calc.calc_amount(
-        start_date=date(2010, 1, 1),
-        end_date=date(2021, 3, 1),
-        capital=657.43,
-        frequency="daily",
-        save_csv=False,
-    )
+    with open('parameters.json', 'r') as arquivo:
+        parametros = json.load(arquivo)
+
+    start_date = parametros['dates']['start_date']
+    end_date =  parametros['dates']['end_date']
+
+    serie_values_interval = APISeriesIntervalDataLoader(start_date,end_date)
+
+    URLData = parametros['urlAPIParameters']
+    BCBValues_df = serie_values_interval.requestSerieIntervalData(URLData)
+    print(BCBValues_df)

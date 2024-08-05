@@ -28,6 +28,9 @@ if __name__ == '__main__':
     reshape = dataReshape(capital,frequency)
     dfCompound_reshaped = reshape.reshape_df(dfCompound)
 
+    args = f'\n\nArgs\n\nstar_date: {start_date}\nend_date: {end_date}\ncapital: {capital}\nfrequency: {frequency}\n\n'
+
+    print(args)
     print(dfCompound_reshaped)
 
     csv = parameters['general']['save_csv']

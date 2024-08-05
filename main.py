@@ -2,6 +2,7 @@ import json
 
 from data.loadDataHandler import APISeriesIntervalDataLoader
 from data.dataFormatHandler import dataReshape
+from data.saveDataHandler import saveCsv
 from Calculator.amountEarnedHandler import calcAmountEarned
 
 if __name__ == '__main__':
@@ -28,6 +29,13 @@ if __name__ == '__main__':
     dfCompound_reshaped = reshape.reshape_df(dfCompound)
 
     print(dfCompound_reshaped)
+
+    csv = parameters['general']['save_csv']
+    boolean_value = csv.strip().upper() == "TRUE"
+
+    if boolean_value:
+        saveCsv(dfCompound_reshaped,"AmountEarnedData.csv")
+
 
     window = parameters['range']['days']
     amountEarned.calcBestEarn(window)

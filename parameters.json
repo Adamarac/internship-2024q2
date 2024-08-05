@@ -7,7 +7,7 @@
     "dates":{
         "start_date":"2010-1-1",
         "end_date":"2021-3-1",
-        "frequency":"M"
+        "frequency":"D"
     },
 
     "range":{

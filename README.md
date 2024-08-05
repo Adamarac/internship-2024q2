@@ -2,6 +2,8 @@
 
 This document provides detailed instructions on how to configure and use the JSON parameter file to calculate profits based on the SELIC rate.
 
+Author: Alan Moura Silva
+
 ## JSON File Structure
 
 The JSON file has the following structure:

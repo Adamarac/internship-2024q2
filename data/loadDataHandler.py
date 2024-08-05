@@ -6,7 +6,7 @@ import logging
 
 #Defines the logging behavior of the class
 def setup_logging():
-    log_filename = datetime.now().strftime('./logs/%Y-%m-%d_%H-%M-%S')
+    log_filename = datetime.now().strftime('./loggs/%Y-%m-%d_%H-%M-%S')
     logging.basicConfig(
         level=logging.INFO,  
         format='%(asctime)s - %(levelname)s - %(message)s',

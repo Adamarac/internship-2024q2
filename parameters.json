@@ -1,6 +1,6 @@
 {
     "general":{
-        "capital":"651,43",
+        "capital":"657.43",
         "save_csv":"TRUE"
     },
 
@@ -21,8 +21,7 @@
 
     "paths":{
         "path_amountEarned" : "amountearned/",
-        "path_bestAmountEarned" : "bestAmountEarned/",
-        "path_loggings": "loggs/"
+        "path_bestAmountEarned" : "bestAmountEarned/"
     },
 
     "logging":{

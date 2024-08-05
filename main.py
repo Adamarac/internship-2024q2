@@ -1,17 +1,24 @@
 import json
 
 from data.loadDataHandler import APISeriesIntervalDataLoader
+from Calculator.amountEarnedHandler import calcAmountEarned
 
 if __name__ == '__main__':
 
     with open('parameters.json', 'r') as arquivo:
-        parametros = json.load(arquivo)
+        parameters = json.load(arquivo)
 
-    start_date = parametros['dates']['start_date']
-    end_date =  parametros['dates']['end_date']
+    start_date = parameters['dates']['start_date']
+    end_date =  parameters['dates']['end_date']
 
     serie_values_interval = APISeriesIntervalDataLoader(start_date,end_date)
 
-    URLData = parametros['urlAPIParameters']
+    URLData = parameters['urlAPIParameters']
     BCBValues_df = serie_values_interval.requestSerieIntervalData(URLData)
     print(BCBValues_df)
+
+    capital = parameters['general']['capital']
+    amountEarned = calcAmountEarned(capital,BCBValues_df)
+
+    frequency = parameters['dates']['frequency']
+    dfCompound = amountEarned.CalcEarned(frequency)

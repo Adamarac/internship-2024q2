@@ -95,7 +95,7 @@ Logs will be generated according to the level defined in logging. Check the logs
 
 
 # Question answer
-![]([https://imgur.com/a/HfUzEUC](https://i.imgur.com/RH3OGWn.png))
+![Description of Image](https://i.imgur.com/RH3OGWn.png)
 
 As requested, the answer to the question displayed by the code is:
 

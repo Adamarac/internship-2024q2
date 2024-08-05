@@ -1,6 +1,7 @@
 import json
 
 from data.loadDataHandler import APISeriesIntervalDataLoader
+from data.dataFormatHandler import dataReshape
 from Calculator.amountEarnedHandler import calcAmountEarned
 
 if __name__ == '__main__':
@@ -22,5 +23,11 @@ if __name__ == '__main__':
     frequency = parameters['dates']['frequency']
     dfCompound = amountEarned.CalcEarned()
 
+    frequency = parameters['dates']['frequency']
+    reshape = dataReshape(capital,frequency)
+    dfCompound_reshaped = reshape.reshape_df(dfCompound)
+
+    print(dfCompound_reshaped)
+
     window = parameters['range']['days']
-    amountEarned.calcBestEarn()
+    amountEarned.calcBestEarn(window)

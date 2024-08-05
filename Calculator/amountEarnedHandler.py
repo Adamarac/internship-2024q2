@@ -66,7 +66,7 @@ class calcAmountEarned:
         df = self.df
         df['data'] = pd.to_datetime(df['data'], format='%d/%m/%Y')
 
-        max_Date = df.iloc[-1]["data"] - timedelta(days=range_of)
+        max_Date = df.iloc[-1]["data"] - timedelta(days=int(range_of))
         indice = df[df['data'] <= max_Date].index
         length = indice[-1] + 1
 
@@ -78,7 +78,7 @@ class calcAmountEarned:
         #Iterates over each window and updates the variables if a better result is found
         for i in range(0, length):
             start = df.iloc[i]["data"]
-            end_date = start + timedelta(days=range_of)
+            end_date = start + timedelta(days=int(range_of))
             end_index = df[df['data'] <= end_date].index
 
             if len(end_index) == 0:
@@ -96,7 +96,7 @@ class calcAmountEarned:
         logging.info("Best window found")
         print(
             f"\n\nThe best day to invest is {best_start.date()}, with an amount earned of {best_value} after {range_of} "
-            f"days ({best_start.date()} to {best_end.date()}\n\n)"
+            f"days ({best_start.date()} to {best_end.date()})\n\n"
         )
 
 

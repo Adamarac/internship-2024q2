@@ -79,7 +79,7 @@ Possible values: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
 Example: "level": "INFO"
 
 
-### **Instructions for Use**
+# **Instructions for Use**
 
 **Initial Configuration:**
 Edit the JSON file with the desired parameters. Make sure that the values are correct and within the specified formats.

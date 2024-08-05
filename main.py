@@ -15,10 +15,12 @@ if __name__ == '__main__':
 
     URLData = parameters['urlAPIParameters']
     BCBValues_df = serie_values_interval.requestSerieIntervalData(URLData)
-    print(BCBValues_df)
 
     capital = parameters['general']['capital']
     amountEarned = calcAmountEarned(capital,BCBValues_df)
 
     frequency = parameters['dates']['frequency']
-    dfCompound = amountEarned.CalcEarned(frequency)
+    dfCompound = amountEarned.CalcEarned()
+
+    window = parameters['range']['days']
+    amountEarned.calcBestEarn()

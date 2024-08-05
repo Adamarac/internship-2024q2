@@ -16,7 +16,7 @@ def setup_logging():
         ]
     )
 
-
+#Class that changes the format of the DataFrame
 class dataReshape:
 
     def __init__(self,capital,frequency:str):
@@ -27,6 +27,8 @@ class dataReshape:
         logging.info("Formating data")
         df['data'] = pd.to_datetime(df['data'], format='%d/%m/%Y')
         df.set_index("data", inplace=True)
+
+        #Groups the data according to the frequency parameter
         if self.frequency == "D":
             df = df.groupby([df.index.date]).tail(1)
         elif self.frequency == "M":
@@ -37,6 +39,7 @@ class dataReshape:
             logging.error("Invalid frequency")
             exit()
 
+        #Sorts according to the date index
         df = df.sort_index()
         df.drop(["valor"], axis="columns", inplace=True)
         df.index.names = ["Date"]

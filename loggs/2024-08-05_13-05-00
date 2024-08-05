@@ -1,0 +1,15 @@
+2024-08-05 13:05:00,161 - INFO - Object instance created
+2024-08-05 13:05:00,162 - INFO - Defined datas 2010-1-1 to start_date and 2021-3-1 to end_date
+2024-08-05 13:05:00,163 - INFO - The start and end dates have been validated (start:2010-01-01 00:00:00 end:2021-03-01 00:00:00)
+2024-08-05 13:05:00,163 - INFO - The start and end dates have been converted (start:01/01/2010 end:01/03/2021)
+2024-08-05 13:05:00,164 - INFO - Defined series ID mapping
+2024-08-05 13:05:00,164 - INFO - Founded key to SELIC: 11
+2024-08-05 13:05:00,164 - INFO - Requesting URL: https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=json&dataInicial=01/01/2010&dataFinal=01/03/2021
+2024-08-05 13:05:00,383 - INFO - Object instance created
+2024-08-05 13:05:00,383 - INFO - The capital have been validated: 657.43
+2024-08-05 13:05:00,387 - INFO - Compound have been calculated
+2024-08-05 13:05:00,389 - INFO - Amount earned have been calculated
+2024-08-05 13:05:00,389 - INFO - Formating data
+2024-08-05 13:05:00,417 - INFO - The data have been formated
+2024-08-05 13:05:00,497 - INFO - Search for window with the best profit initiated
+2024-08-05 13:05:10,132 - INFO - Best window found

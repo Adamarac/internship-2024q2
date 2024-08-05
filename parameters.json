@@ -19,11 +19,6 @@
         "serie_name" : "SELIC"
     },
 
-    "paths":{
-        "path_amountEarned" : "amountearned/",
-        "path_bestAmountEarned" : "bestAmountEarned/"
-    },
-
     "logging":{
         "level":"INFO"
     }
